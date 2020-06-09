@@ -1,59 +1,56 @@
-//  Destructuring Assignment
+//  MAPs = key-value pairs - can use ANY type as a key or value
 
-let a, b;
+const map1 = new Map();
 
-[a, b] = [100, 200];
+//  Set Keys
+const key1 = 'some string',
+      key2 = {},
+      key3 = function() {};
 
-//  Rest pattern
-[a, b, c, ...rest] = [100, 200, 300, 400, 500];
+//  Set map values by key
+map1.set(key1, 'Value of key1');
+map1.set(key2, 'Value of key2');
+map1.set(key3, 'Value of key3');
 
-// console.log(a);
-// console.log(b);
-// console.log(c);
-// console.log(rest);
+//  Get values by key
+// console.log(map1.get(key1), map1.get(key2), map1.get(key3));
 
-({a, b} = {a: 100, b: 200, c: 300, d: 400, e: 500});
-({ a, b, ...rest } = { a: 100, b: 200, c: 300, d: 400, e: 500 });
 
-//  Array Destructuring
+//  Count values
+// console.log(map1.size);
 
-/* const people = ['John', 'Berth', 'Mike'];
+//  ITERATING MAPS
 
-const [person1, person2, person3] = people;
+//  Loop using for...of to get keys and values
+// for(let [key, value] of map1) {
+//   console.log(`${key} = ${value}`);
+// }
 
-console.log(person1, person2, person3); */
+//  Iterate keys only
+// for(let key of map1.keys()) {
+//   console.log(key);
+// }
 
-//  Parse array returned from function
+//  Iterate values only
+// for(let value of map1.values()) {
+//   console.log(value);
+// }
 
-/* function getPeople() {
-  return ['John', 'Berth', 'Mike'];
-}
+//  Loop with forEach
+// map1.forEach(function(value, key) {
+//   console.log(`${key} = ${value}`)
+// });
 
-let person1, person2, person3;
-[person1, person2, person3] = getPeople();
+//  CONVERT TO ARRAYS
 
-console.log(person1, person2, person3); */
+//  Create an array of the key value pairs
+const keyValArr = Array.from(map1);
+console.log(keyValArr);
 
-//  Object Destructuring
+//  Create an array of the values
+const valArr = Array.from(map1.values());
+console.log(valArr);
 
-const person = {
-  name: 'John Doe',
-  age:  32,
-  city: 'Miami',
-  gender: 'Male',
-  sayHello: function() {
-    console.log('Hello');
-  }
-}
-
-//  Old ES5
-/* const name = person.name,
-      age = person.age,
-      city = person.city */;
-
-//  New ES6 Destructuring
-const { name, age, city, sayHello } = person;
-
-console.log(name, age, city);
-
-sayHello();
+//  Create an array of the keys
+const keyArr = Array.from(map1.keys());
+console.log(keyArr);
